@@ -1,0 +1,44 @@
+class Solution {
+public:
+    int minimumPushes(string word)
+    {
+        vector<int>v(26,0);
+        int l=word.length();
+         for (int i = 0; i <l; i++)
+            {
+                v[word[i]-'a']++;
+            }
+        
+        sort(v.begin(), v.end(), greater<int>());
+        int len=v.size();
+        
+        int ans=0;
+        int n;
+        for (int i = 0; i < len; i++)
+        {
+            int n=i+1;
+            if (n <= 8)
+            {
+                ans+=(v[i]);
+            }
+            else if (n > 8 && n <= 16)
+            {
+                 ans += (v[i]*2);
+                
+            }
+            else if (n > 16 && n <= 24)
+            {
+                ans +=(3 * v[i]);
+                
+            }
+            else
+            {
+                ans += (v[i] * 4);
+            }
+            
+           
+        }
+         return ans;
+        
+    }
+};
