@@ -1,0 +1,32 @@
+class Solution {
+public:
+    
+   
+    
+    vector<int> countOfPairs(int n, int x, int y) 
+    {
+        vector<int>ans(n,0);
+        if(x>y)
+        swap(x,y);
+        
+        int diff;
+        if(x==y)
+            diff=0;
+        else
+            diff=1;
+        for (int i = 1; i < n; i++)
+        {
+            for (int j = i+1; j <=n; j++)
+            {
+                
+                int r1=(j-i);
+                int r2= abs(x-i)+diff+abs(y-j);
+                
+               int r=min(r1,r2);
+               ans[r-1]+=2;
+            }
+        }
+        return ans;
+        
+    }
+};
